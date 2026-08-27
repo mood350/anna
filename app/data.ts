@@ -28,6 +28,7 @@ export const TAGLINE =
 
 export const OPENING = [
   `Tu es fatigante. Tu parles trop, tu ris trop fort, et tu réponds à mes messages avant même que j'aie fini de les écrire. À trois heures du matin tu décroches encore, comme si l'heure ne te concernait pas.`,
+  `Tu as des goûts de cinéma très discutables et des goûts culinaires encore pires. Tu défends des films que personne au monde ne défend, et tu mets dans une même assiette des choses qui n'auraient jamais dû se rencontrer.`,
   `Et je ne changerais absolument rien.`,
 ];
 
