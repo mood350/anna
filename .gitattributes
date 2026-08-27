@@ -1,0 +1,10 @@
+# Les fichiers texte sont stockés en LF dans le dépôt, quel que soit l'OS.
+* text=auto eol=lf
+
+# Les binaires ne doivent jamais être convertis.
+*.mp4 binary
+*.mp3 binary
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.ico binary

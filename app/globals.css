@@ -1,0 +1,212 @@
+@import "tailwindcss";
+
+@theme {
+  /* Violet clair : la couleur demandée, déclinée du plus pâle au plus profond. */
+  --color-lilas-50: #faf6fd;
+  --color-lilas-100: #f2e9fa;
+  --color-lilas-200: #eadcf6;
+  --color-lilas-300: #dcc9ee;
+  --color-lilas-400: #c9a8e9;
+  --color-lilas-500: #b58fdf;
+  --color-lilas-600: #8b5fbf;
+  --color-lilas-700: #6b3fa0;
+  --color-encre-800: #453257;
+  --color-encre-900: #2a1f35;
+  /* Rose poudré : l'accent chaud, utilisé avec parcimonie. */
+  --color-poudre-300: #f0cdd7;
+  --color-poudre-400: #e4a9b8;
+  /* Le bleu des dômes et l'or du couchant — réservés au chapitre grec. */
+  --color-egee-400: #5b8fd4;
+  --color-egee-600: #35619e;
+  --color-or-300: #f2c48a;
+  --color-or-500: #d99f4e;
+
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-main: var(--font-caveat), "Segoe Script", cursive;
+  --font-body: var(--font-karla), ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-encre-900);
+  background-color: var(--color-lilas-50);
+  background-image:
+    radial-gradient(58rem 38rem at 8% -6%, #ecdcf9 0%, transparent 62%),
+    radial-gradient(46rem 34rem at 96% 8%, #f3e4f7 0%, transparent 64%),
+    radial-gradient(64rem 46rem at 46% 108%, #e7d9f8 0%, transparent 66%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ---------- Typographie variable ---------- */
+
+/*
+ * Fraunces a deux axes qui font tout son caractère : SOFT arrondit les angles,
+ * WONK bascule les lettres sur leurs variantes fantaisistes. Sans eux la police
+ * ressemble à n'importe quel autre serif.
+ */
+.type-tendre {
+  font-variation-settings: "SOFT" 50, "WONK" 1;
+}
+
+.type-tendre-xl {
+  font-variation-settings: "SOFT" 70, "WONK" 1;
+}
+
+/* ---------- Cartes ---------- */
+
+/*
+ * Un coin arrondi sur deux : le contour d'un pétale plutôt que d'une carte de
+ * dashboard.
+ */
+.carte-petale {
+  border-radius: 0.25rem 1.5rem 0.25rem 1.5rem;
+  background: rgba(255, 255, 255, 0.62);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 18px 40px -24px rgba(107, 63, 160, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+/* ---------- Animations d'ambiance ---------- */
+
+.derive-lente {
+  animation: derive 9s ease-in-out infinite;
+}
+
+.derive-tres-lente {
+  animation: derive 14s ease-in-out infinite;
+}
+
+@keyframes derive {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-16px);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* L'ouverture n'attend pas le défilement : elle se pose dès le chargement. */
+.entree {
+  opacity: 0;
+  animation: monte 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: var(--entree-delay, 0ms);
+}
+
+@keyframes monte {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.respire {
+  animation: respire 2.8s ease-in-out infinite;
+}
+
+@keyframes respire {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(0.5rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .derive-lente,
+  .derive-tres-lente,
+  .respire {
+    animation: none;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .entree {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+/* ---------- Le rideau d'entrée ---------- */
+
+/*
+ * `data-enveloppe="vue"` est posé par le script inline de `layout.tsx` quand le
+ * visiteur a déjà ouvert l'enveloppe, puis à nouveau à la fin de l'ouverture.
+ * Trois choses en dépendent : le rideau est masqué dès le premier pixel peint,
+ * la page ne défile pas tant qu'il est là, et les animations d'entrée attendent
+ * leur tour plutôt que de se jouer derrière l'enveloppe.
+ */
+html[data-enveloppe="vue"] .enveloppe-gate {
+  display: none;
+}
+
+html:not([data-enveloppe="vue"]) {
+  overflow: hidden;
+}
+
+html:not([data-enveloppe="vue"]) .entree {
+  animation-play-state: paused;
+}
+
+.enveloppe-scene {
+  perspective: 1100px;
+}
+
+.enveloppe-rabat {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+/* ---------- Divers ---------- */
+
+::selection {
+  background: var(--color-lilas-300);
+  color: var(--color-encre-900);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-lilas-600);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
