@@ -283,7 +283,7 @@ export default function SouvenirDeck() {
               onPointerMove={actif ? onPointerMove : undefined}
               onPointerUp={actif ? onPointerUp : undefined}
               onPointerCancel={actif ? onPointerUp : undefined}
-              className="absolute inset-0 overflow-hidden rounded-[1.5rem] border border-white/70 bg-lilas-200 shadow-2xl shadow-lilas-700/25 touch-pan-y"
+              className="souvenir-print absolute inset-0 overflow-hidden rounded-[1.5rem] border border-white/70 bg-lilas-200 shadow-2xl shadow-lilas-700/25 touch-pan-y"
             >
               <Media souvenir={carte} actif={actif} muted={muted} />
 
@@ -300,7 +300,7 @@ export default function SouvenirDeck() {
                         type="button"
                         onClick={() => setMuted((m) => !m)}
                         aria-label={muted ? "Activer le son" : "Couper le son"}
-                        className="flex h-9 w-9 items-center justify-center rounded-full bg-white/25 text-white ring-1 ring-white/50 backdrop-blur-sm transition hover:bg-white/45"
+                        className="flex h-11 w-11 items-center justify-center rounded-full bg-white/25 text-white ring-1 ring-white/50 backdrop-blur-sm transition hover:bg-white/45"
                       >
                         <SoundIcon muted={muted} />
                       </button>
@@ -310,7 +310,7 @@ export default function SouvenirDeck() {
                       type="button"
                       onClick={() => setZoom(top)}
                       aria-label="Voir en grand"
-                      className="flex h-9 w-9 items-center justify-center rounded-full bg-white/25 text-white ring-1 ring-white/50 backdrop-blur-sm transition hover:bg-white/45"
+                      className="flex h-11 w-11 items-center justify-center rounded-full bg-white/25 text-white ring-1 ring-white/50 backdrop-blur-sm transition hover:bg-white/45"
                     >
                       <ExpandIcon />
                     </button>
@@ -381,7 +381,7 @@ export default function SouvenirDeck() {
       </div>
 
       {/* ---------- Le rang de points : où on en est, et un accès direct ---------- */}
-      <div className="mt-6 flex flex-wrap justify-center gap-2">
+      <div className="souvenir-pagination mt-6 flex flex-wrap justify-center gap-2">
         {SOUVENIRS.map((s, i) => (
           <button
             key={s.src}

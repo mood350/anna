@@ -43,7 +43,7 @@ export default function Home() {
       <PetalRain />
       <Soundtrack />
 
-      <main className="relative z-10 flex-1">
+      <main className="site-story relative z-10 flex-1">
         <Hero />
 
         {/* ---------- Chapitre un : le ton complice ---------- */}
@@ -61,7 +61,7 @@ export default function Home() {
           />
 
           <Reveal delay={120}>
-            <div className="mx-auto mt-10 max-w-2xl space-y-4 text-center text-[0.98rem] leading-[1.85] text-encre-800/85 sm:text-lg">
+            <div className="mx-auto mt-10 max-w-2xl space-y-4 opening-prose text-[0.98rem] leading-[1.85] text-encre-800/85 sm:text-lg">
               {OPENING.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
@@ -129,7 +129,7 @@ export default function Home() {
           />
 
           <Reveal delay={120}>
-            <div className="carte-petale mt-10 p-7 sm:p-11">
+            <div className="letter-paper mt-10 p-7 sm:p-11">
               <p className="font-main text-3xl text-lilas-600 sm:text-4xl">
                 {FRIEND},
               </p>
@@ -159,7 +159,7 @@ export default function Home() {
         </section>
 
         {/* ---------- Chapitre quatre : les certitudes ---------- */}
-        <section className="mx-auto w-full max-w-6xl px-5 py-20 sm:py-28">
+        <section id="certitudes" className="certainty-section mx-auto w-full max-w-6xl px-5 py-20 sm:py-28">
           <ChapterTitle
             eyebrow="Chapitre quatre"
             title={
@@ -240,7 +240,7 @@ export default function Home() {
         </section>
 
         {/* ---------- La fin ---------- */}
-        <section className="px-5 pb-24 pt-6 text-center sm:pb-32">
+        <section className="closing-section px-5 pb-24 pt-6 text-center sm:pb-32">
           <Reveal>
             <div className="mx-auto max-w-2xl">
               <p className="text-xs font-bold uppercase tracking-[0.32em] text-lilas-600">
