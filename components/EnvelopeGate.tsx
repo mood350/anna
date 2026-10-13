@@ -98,7 +98,7 @@ export default function EnvelopeGate() {
 
   return (
     <div
-      className={`enveloppe-gate fixed inset-0 z-[60] flex flex-col items-center justify-center gap-7 bg-lilas-100 px-6 py-10 transition-opacity duration-700 ${
+      className={`enveloppe-gate postcard-gate fixed inset-0 z-[60] flex flex-col items-center justify-center gap-7 px-6 py-10 transition-opacity duration-700 ${
         etape === "sortie" ? "pointer-events-none opacity-0" : "opacity-100"
       }`}
     >
@@ -124,7 +124,7 @@ export default function EnvelopeGate() {
       >
         <span className="relative block aspect-[3/2] w-full">
           {/* Doublure : ce qu'on aperçoit derrière la carte */}
-          <span className="absolute inset-0 rounded-[0.9rem] bg-gradient-to-br from-lilas-500 to-lilas-700 shadow-2xl shadow-lilas-700/35" />
+          <span className="absolute inset-0 rounded-[0.9rem] bg-gradient-to-br from-[#326c87] to-[#173f58] shadow-2xl shadow-[#173f58]/35" />
 
           {/* La carte, qui monte hors de l'enveloppe */}
           <span
@@ -149,8 +149,8 @@ export default function EnvelopeGate() {
           >
             <defs>
               <linearGradient id="poche" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#c9a8e9" />
-                <stop offset="100%" stopColor="#8b5fbf" />
+                <stop offset="0%" stopColor="#5e8fa5" />
+                <stop offset="100%" stopColor="#24566f" />
               </linearGradient>
             </defs>
             <path
@@ -173,8 +173,8 @@ export default function EnvelopeGate() {
             >
               <defs>
                 <linearGradient id="rabat" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#dcc9ee" />
-                  <stop offset="100%" stopColor="#b58fdf" />
+                  <stop offset="0%" stopColor="#f4eee2" />
+                  <stop offset="100%" stopColor="#d9c8b4" />
                 </linearGradient>
               </defs>
               <path d="M10 0 L290 0 Q300 0 300 10 L150 110 L0 10 Q0 0 10 0 Z" fill="url(#rabat)" />
