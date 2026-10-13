@@ -187,7 +187,7 @@ export default function Soundtrack() {
         onClick={basculer}
         aria-pressed={joue}
         aria-label={joue ? "Couper la musique" : "Remettre la musique"}
-        className="fixed bottom-5 right-5 z-40 flex h-11 w-11 items-center justify-center rounded-full border border-lilas-300 bg-white/80 text-lilas-700 shadow-lg shadow-lilas-700/20 backdrop-blur transition hover:-translate-y-0.5 hover:bg-white sm:bottom-7 sm:right-7"
+        className="soundtrack-control fixed bottom-5 right-5 z-40 flex h-12 w-12 items-center justify-center rounded-full transition hover:-translate-y-0.5 sm:bottom-7 sm:right-7"
       >
         <NoteIcon actif={joue} />
       </button>

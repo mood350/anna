@@ -40,11 +40,11 @@ export default function ScrollProgress() {
     <div
       ref={cadre}
       aria-hidden="true"
-      className="pointer-events-none fixed inset-x-0 top-0 z-40 h-[3px] bg-lilas-200/40"
+      className="pointer-events-none fixed inset-x-0 top-0 z-40 h-[3px] bg-[#d9c8b4]/40"
     >
       <div
         ref={barre}
-        className="h-full origin-left scale-x-0 bg-gradient-to-r from-lilas-600 via-lilas-400 to-or-300 will-change-transform"
+        className="h-full origin-left scale-x-0 bg-gradient-to-r from-[#173f58] via-[#c96f4a] to-[#f2bb68] will-change-transform"
       />
     </div>
   );

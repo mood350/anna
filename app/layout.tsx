@@ -1,27 +1,46 @@
-import type { Metadata } from "next";
-import { Fraunces, Karla, Caveat } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Cormorant_Garamond, EB_Garamond, Pinyon_Script, Caveat } from "next/font/google";
 import "./globals.css";
 import { FRIEND } from "./data";
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+/** Les titres : un Garamond de titrage, très fin, superbe en italique. */
+const display = Cormorant_Garamond({
+  variable: "--font-display",
   subsets: ["latin"],
-  axes: ["SOFT", "WONK", "opsz"],
+  weight: ["300", "400", "500", "600"],
+  style: ["normal", "italic"],
 });
 
-const karla = Karla({
-  variable: "--font-karla",
+/** Le texte courant : un Garamond de livre, fait pour être lu longtemps. */
+const body = EB_Garamond({
+  variable: "--font-body",
   subsets: ["latin"],
+  style: ["normal", "italic"],
 });
 
-const caveat = Caveat({
-  variable: "--font-caveat",
+/** La signature dorée de la couverture et le « Toujours » de la fin. */
+const script = Pinyon_Script({
+  variable: "--font-script",
+  subsets: ["latin"],
+  weight: "400",
+});
+
+/** Les légendes écrites à la main sous les souvenirs. */
+const hand = Caveat({
+  variable: "--font-hand",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: FRIEND,
-  description: `Une page rien que pour ${FRIEND} — ce que je ne lui dis jamais, écrit une bonne fois.`,
+  title: `${FRIEND} — un livre`,
+  description: `Un livre à feuilleter, rien que pour ${FRIEND}.`,
+};
+
+export const viewport: Viewport = {
+  themeColor: "#1b0a33",
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
@@ -32,30 +51,9 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${fraunces.variable} ${karla.variable} ${caveat.variable} h-full antialiased`}
+      className={`${display.variable} ${body.variable} ${script.variable} ${hand.variable}`}
     >
-      <head>
-        {/*
-          Doit s'exécuter avant le premier rendu : si l'enveloppe a déjà été
-          ouverte, l'attribut la masque en CSS et personne ne la voit clignoter.
-          En cas de stockage refusé, on retombe sur « jamais vue », donc sur
-          l'enveloppe — c'est le comportement le moins surprenant.
-        */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `try{if(localStorage.getItem("anna:enveloppe")==="vue"){document.documentElement.dataset.enveloppe="vue"}}catch(e){}`,
-          }}
-        />
-        {/*
-          Sans JavaScript, GSAP ne lève jamais le voile sur les blocs qui
-          attendent leur apparition, et l'enveloppe ne s'ouvre pas. La page
-          resterait vide : ce filet la rend simplement lisible, sans animation.
-        */}
-        <noscript>
-          <style>{`.invisible{visibility:visible!important}.enveloppe-gate{display:none!important}html{overflow:auto!important}`}</style>
-        </noscript>
-      </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body>{children}</body>
     </html>
   );
 }
