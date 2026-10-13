@@ -243,3 +243,64 @@ export const SOUVENIRS: Souvenir[] = [
     alt: "Souvenir vidéo",
   },
 ];
+
+/* ------------------------------------------------------------------ */
+/* Le livre — couverture, chapitres et dernières pages                 */
+/* ------------------------------------------------------------------ */
+
+/** Sous la grande signature dorée de la couverture. */
+export const COVER_SUBTITLE = "Le livre de ce que je ne dis jamais";
+
+/** En bas de la couverture. */
+export const COVER_FOOT = "Exemplaire unique";
+
+export type Chapitre = {
+  /** « Chapitre un », « Chapitre deux »… */
+  numero: string;
+  /** Début du titre, en romain. */
+  avant: string;
+  /** Fin du titre, en italique violet. */
+  accent: string;
+  /** Petite phrase sous le titre (facultative). */
+  chapeau?: string;
+};
+
+/**
+ * Les quatre chapitres. Les souvenirs (photos et vidéos) ne forment plus un
+ * chapitre à part : ils sont glissés entre les pages, une page de texte, une
+ * page souvenir, d'un bout à l'autre du livre.
+ */
+export const CHAPITRES: Record<"honnetes" | "lettre" | "certitudes" | "grece", Chapitre> = {
+  honnetes: { numero: "Chapitre un", avant: "D'abord,", accent: "soyons honnêtes" },
+  lettre: {
+    numero: "Chapitre deux",
+    avant: "Ce que je ne",
+    accent: "dis jamais",
+    chapeau: "Une lettre, parce que c'est plus facile ainsi.",
+  },
+  certitudes: {
+    numero: "Chapitre trois",
+    avant: "Les choses que",
+    accent: "je sais",
+    chapeau: "Sans avoir besoin de vérifier, sans avoir besoin de demander.",
+  },
+  grece: { numero: "Chapitre quatre", avant: "Un jour,", accent: "la Grèce" },
+};
+
+/** La formule en bas de la lettre, au-dessus de la signature. */
+export const LETTER_SIGNOFF = "Merci d'être là.";
+
+/** Utilisée seulement si le livre a besoin d'une page de plus pour tomber juste. */
+export const BLANK_PAGE =
+  "Cette page est laissée blanche, exprès. Pour tout ce qu'on n'a pas encore vécu.";
+
+export const CLOSING_EYEBROW = "Il n'y a pas de chapitre cinq";
+export const CLOSING_WORD = "Toujours.";
+export const CLOSING_TEXT =
+  "Le reste, on continuera de se le dire de vive voix — mal, en riant, comme d'habitude.";
+
+/** La dernière page, comme l'achevé d'imprimer d'un vrai livre. */
+export const COLOPHON = [
+  "Ce livre a été écrit à la main, relu trop de fois, et imprimé à un seul exemplaire.",
+  "Il a été composé en violet, parce que c'est ta couleur.",
+];
